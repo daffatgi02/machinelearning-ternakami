@@ -1,9 +1,11 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from inference_sdk import InferenceHTTPClient
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+CORS(app)  # Mengizinkan semua domain untuk mengakses API ini
 
 # Konfigurasi folder untuk menyimpan gambar yang diunggah
 UPLOAD_FOLDER = 'uploads'
