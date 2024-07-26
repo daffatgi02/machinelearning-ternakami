@@ -60,7 +60,7 @@ def infer():
 
         response = {
             "Animal_Name": animal_name,
-            "predicted_class": descriptive_class,
+            "label_prediksi": descriptive_class,
             "confidence": confidence
         }
         return jsonify(response), 200
