@@ -24,6 +24,10 @@ PREDICTION_MAPPING = {
     "normal": "Mata Kambing Terlihat Sehat"
 }
 
+@app.route('/')
+def home():
+    return "Service aktif"
+
 @app.route('/api/predict', methods=['POST'])
 def infer():
     if 'image' not in request.files:
