@@ -1,7 +1,7 @@
+import os
 from flask import Flask, request, jsonify
 from inference_sdk import InferenceHTTPClient
 from werkzeug.utils import secure_filename
-import os
 
 app = Flask(__name__)
 
@@ -12,10 +12,10 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Inisialisasi InferenceHTTPClient
+# Inisialisasi InferenceHTTPClient menggunakan variabel environment
 CLIENT = InferenceHTTPClient(
-    api_url="https://classify.roboflow.com",
-    api_key="nRlwSKCl38Ak3mD2hX9A"
+    api_url=os.environ.get("API_URL"),
+    api_key=os.environ.get("API_KEY")
 )
 
 # Mapping dari hasil prediksi ke deskripsi yang lebih deskriptif
@@ -69,4 +69,4 @@ def infer():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
