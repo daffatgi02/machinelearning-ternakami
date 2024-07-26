@@ -22,8 +22,8 @@ CLIENT = InferenceHTTPClient(
 
 # Mapping dari hasil prediksi ke deskripsi yang lebih deskriptif
 PREDICTION_MAPPING = {
-    "pink-eye": "Mata Kambing Terjangkit Pinkeye",
-    "normal": "Mata Kambing Terlihat Sehat"
+    "pink-eye": "Mata Terjangkit PinkEye",
+    "normal": "Mata Terlihat Sehat"
 }
 
 @app.route('/')
